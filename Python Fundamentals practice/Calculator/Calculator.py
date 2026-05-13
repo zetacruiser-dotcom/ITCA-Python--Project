@@ -12,8 +12,8 @@ def Get_number():
 ### This function gets the calculation that the user want to do            
 def Get_calculation():
     while True:
-        calculation = input("enter a calculation (+, -, *, /,s,r): ")
-        if calculation in ['+', '-', '*', '/', 's', 'r']:
+        calculation = input("enter a calculation (+, -, *, /, s, r, % ): ")
+        if calculation in ['+', '-', '*', '/', 's', 'r', '%']:
             return calculation
         else: ### error message will occur if the user inputs an invalid calculation
             print("Invalid input. Please enter a valid calculation.")
@@ -35,10 +35,16 @@ def calculator():
         else:
             print("Error: Division by zero is not allowed.")
             return
+    elif Calc == "%":
+        if Num2 != 0: ### A number can't be divided by zero, so an error message will be displayed
+                result = Num1 % Num2
+        else:
+            print("Error: Division by zero is not allowed.")
+            return
     elif Calc == "s":
         result = math.pow(Num1, Num2)
     elif Calc == "r":
-        result = Num1 % Num2
+        result = math.pow(Num1, 1/Num2)
     print("The result is: ", result)
  ### The loop allows the user to do more than one calculation without needing to restart the program   
 while True:
