@@ -1,0 +1,10 @@
+Store 5 peoples information in a dictionary/ personal information ex Name surname date of birth
+Input for a date
+
+output : all 5 peoples information and age on the input date
+
+bonus: Displays any current birthdays
+
+Import date time
+
+From datetime import datetime
