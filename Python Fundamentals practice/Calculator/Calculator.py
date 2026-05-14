@@ -42,9 +42,9 @@ def calculator():
             print("Error: Division by zero is not allowed.")
             return
     elif Calc == "s":
-        result = math.pow(Num1, Num2)
+        result = Num1 ** Num2
     elif Calc == "r":
-        result = math.pow(Num1, 1/Num2)
+        result = Num1 ** (1/Num2)
     print("The result is: ", result)
  ### The loop allows the user to do more than one calculation without needing to restart the program   
 while True:
