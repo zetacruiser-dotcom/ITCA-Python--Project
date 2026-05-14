@@ -55,7 +55,21 @@ def load_users(filename=USER_FILE):
 # Function to add a new user interactively
 def add_user(users):
     print("\nAdd a new user")
-    username = input("Username: ").strip()
+    while True:
+        username = input("Username: ").strip()
+
+        username_exists = False
+
+        for user in users:
+            if user["username"].lower() == username.lower():
+                username_exists = True
+                break
+
+        if username_exists:
+            print("That username already exists. Please choose another one.")
+        else:
+            break
+        
     password = input("Password: ").strip()
     date_of_birth = input("Date of Birth (DD/MM/YYYY): ").strip()
     email = input("Email: ").strip()
@@ -106,7 +120,6 @@ def main_menu():
 
         if choice == "1":
             add_user(User_info)
-            save_users(User_info)  # Ensure save after adding (redundant but safe)
         elif choice == "2":
             login_user(User_info)
         elif choice == "3":
