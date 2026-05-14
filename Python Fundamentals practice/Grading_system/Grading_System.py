@@ -33,24 +33,44 @@ def grading_system(grade):
         return "2"
     else:
         return "1"
+    
+def get_valid_student_id():
+    while True:
+        try:
+            student_id = int(input("Enter the Student ID: "))
+            return student_id
+        except ValueError:
+            print("Invalid input. Please enter a numeric Student ID.")
+            
+def get_valid_grade():
+    while True:
+        try:
+            grade = int(input("Enter the new grade (0-100): "))
+            if 0 <= grade <= 100:
+                return grade
+            else:
+                print("Grade must be between 0 and 100.")
+        except ValueError:
+            print("Invalid input. Please enter a numeric grade.")
 
 # Function to search for a student by ID and optionally update their grade
-def student_search(student_ID):
+def student_search(student_id):
     for student in Students_grades:
-        if student["Student_ID"] == student_ID:
+        if student["Student_ID"] == student_id:
             print(f"Student found: {student['name']} {student['Surname']}, Grade: {student['Grade']}")
             change_grade = input("Do you want to change the grade? (y/n): ").lower()
             if change_grade == "y":
-                new_grade = int(input("Enter the new grade: "))
+                new_grade = get_valid_grade()
                 student["Grade"] = new_grade
                 print(f"Grade updated for {student['name']} {student['Surname']}: {student['Grade']}")
             return True
     return False
 
+
 # Main loop: Allows users to search for students and update grades
 while True:
-    student_ID = int(input("Enter the Student ID: "))
-    found = student_search(student_ID)
+    student_id = get_valid_student_id()
+    found = student_search(student_id)
     if not found:
         print("Student not found.")
     another_search = input("Do you want to search for another student? (y/n): ").lower()
