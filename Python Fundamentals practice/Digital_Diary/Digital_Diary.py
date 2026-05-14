@@ -55,11 +55,14 @@ def load_users(filename=USER_FILE):
 # Function to add a new user interactively
 def add_user(users):
     print("\nAdd a new user")
+
+    # Keep asking until the user enters a username that is not already taken
     while True:
         username = input("Username: ").strip()
 
         username_exists = False
 
+        # Check each existing user to see if the username already exists
         for user in users:
             if user["username"].lower() == username.lower():
                 username_exists = True
